@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Mi Municipio - Cómo se gasta</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles.css" />
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/papaparse.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container" style="padding:0px">
+        <nav class="navbar" role="navigation">
+            <a class="navbar-brand"></a>
+            <ul class="navbar-nav flex-row float-right">
+                <li class="nav-item"><a href="nosotros.html" class="nav-link">NOSOTROS</a></li>
+                <li class="nav-item"><a href="mailto:acapulco@mimunicipio.org" class="nav-link">CONTACTO</a></li>
+                <li class="nav-item item-highlight"><a href="javascript:;" class="nav-link">ACAPULCO DE JU&Aacute;REZ&nbsp;&nbsp;&nbsp;<img src="images/flecha-topmenu.jpg" /></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row" id="mainLogo"><a href="index.html"><img src="images/logo-header.jpg" /></a></div>
+    </div>
+    
+    <div class="container title-bar-container">
+        <div class="row">
+            <div class="col" id="gastaTitleBar">
+                <div class="row main-title">&iquest;C&oacute;mo se gasta?</div>
+                <div class="row title-submenu">
+                    <div class="col">
+                        <a href="como_se_gasta.html#como-se-gasta">&iquest;C&oacute;mo se gasta?</a>
+                        <a href="como_se_gasta.html#cuanto-recibio-mi-municipio">&iquest;Cu&aacute;nto recibi&oacute; mi municipio?</a>
+                        <a href="como_se_gasta.html#cuanto-gasto-en-obras">&iquest;Cu&aacute;nto gast&oacute; en obras mi municipio?</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col title-button" id="planTitleButton">
+                <div class="title"><a href="plan_municipal.html">Plan</a><br />&nbsp;&nbsp;<a href="plan_municipal.html">municipal</a></div>
+                <div class="icon"><a href="plan_municipal.html"><img src="images/plan-title-icon.jpg" /></a></div>
+            </div>
+            <div class="col title-button" id="decideTitleButton">
+                <div class="title"><a href="quien_decide.html">&iquest;Qui&eacute;n</a><br />&nbsp;&nbsp;<a href="quien_decide.html">decide?</a></div>
+                <div class="icon"><img src="images/decide-title-icon.jpg" /></div>
+            </div>
+        </div>
+    </div>
+    
+    <a name="como-se-gasta"></a>
+    <div class="container body-content body-gasta-white">
+        <div class="row">
+            <div class="col body-title" id="gasta1">La Ley de Coordinaci&oacute;n Fiscal obliga a las autoridades de tu municipio a</div>
+        </div>
+        <div class="row" style="padding:20px 0 0 0">
+            <div class="col-5 fondo-naranja">
+                <div class="row" style="padding:20px 20px 0 20px">
+                    <div class="col-2" style="padding-top:10px"><img src="images/gasta-1.jpg" style="max-width:120%" /></div>
+                    <div class="col">
+                        <p class="title" id="gasta2">Informar</p>
+                        <ul>
+                           <li><span id="wordbanner">Cuánto recibe mi municipio para obras de</span> <strong><span id="wordBannerText">alcantarillado</span></strong>.</li> 
+                           <li id="gasta3">Cu&aacute;ndo lo gasta.</li> 
+                           <li id="gasta4">D&oacute;nde se encuentran las obras.</li> 
+                           <li id="gasta5">Quiénes son los beneficiarios.</li> 
+                           <li id="gasta6">Costo de las obras.</li> 
+                        <ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-7 fondo-naranja" style="border-left:solid 8px #FFF">
+                <div class="row" style="padding:20px 20px 0 20px">
+                    <div class="col-2" style="padding-top:10px"><img src="images/gasta-2.jpg" style="max-width:100%" /></div>
+                    <div class="col">
+                        <p class="title" id="gasta7">Seleccionar obras</p>
+                        <ul>
+                           <li id="gasta8">que se realizarán durante el año.</li> 
+                           <li id="gasta9">dichas obras deben atender a varias zonas del municipio.</li> 
+                           <li id="gasta10">la selección de obras debe realizarse entre el Consejo de Planeación para el Desarrollo Municipal (Coplademun) y los consejos de Desarrollo Municipal (CDM). En estos consejos deben participar autoridades municipales y representantes de grupos y organizaciones de la socieda civil.</li> 
+                        <ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <a name="cuanto-recibio-mi-municipio"></a>
+    <div class="container body-content body-gasta-white">
+        <div class="row">
+            <div class="col body-title">&iquest;Cu&aacute;nto recibi&oacute; mi municipio?</div>
+        </div>
+        <div class="row">
+            <p class="gastaInformativo" id="cuanto1">
+                Acapulco recibi&oacute;<span class="naranja">585,006,804.09</span> en 2017 para este tipo de obras y <span class="verde">sí informó a la población</span>.
+            </p>
+        </div>
+    </div>
+
+    <a name="cuanto-gasto-en-obras"></a>
+    <div class="container body-content body-naranja">
+        <div class="row">
+            <div class="col body-title">&iquest;Cu&aacute;nto gast&oacute; en obras mi municipio?</div>
+        </div>
+        <div class="row" style="padding-top:20px">
+            <p class="gastaInformativoNaranja" id="cuanto2">
+                En 2016, de los <span>507,731,381.00 pesos</span>
+                que Acapulco recibió,
+                <span>gastó 503,931,380.00, equivalente al 99% del presupuesto total para estos rubros.</span>
+            </p>
+        </div>
+        <div class="row" style="padding-bottom:20px">
+            <div class="col" style="padding-right:0; margin-right:0; padding-left:0; margin-left:0">
+                <svg id="treemapContainer"><g></g></svg>
+            </div>
+            <div class="col treemapLegend">
+                <img src="images/treemaplegend.jpg" />
+            </div>
+        </div>
+    </div>
+    
+    <div class="container body-content body-gasta-white">
+        <div class="row">
+            <div class="col body-title">&iexcl;Inf&oacute;rmate y participa!</div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p style="font-size:15px" id="informate1">Guía para conocer el proceso de la planeación del gasto público de mi municipio.</p>
+                <!--<p><img src="images/placeholder-gasta.png" /></p>-->
+                <div id="informate1embed"><iframe style="width:525px; height:342px;" src="http://e.issuu.com/embed.html#35186677/65362607" frameborder="0" allowfullscreen></iframe></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container footer-naranja">
+        <div class="row">
+            <div class="col text-right">
+                <a href="mailto:acapulco@mimunicipio.org"><img src="images/footericon-a-naranja.jpg" /></a>
+                &nbsp;
+                <a href="https://www.facebook.com/MiMunicipioAcapulco/"><img src="images/footericon-fb-naranja.jpg" /></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var wordBanner = [];
+        var currentBanner = 0;
+        var treeData = {
+            "name": "Gasto por tipo de obras",
+            "children": []
+        };
+        
+        Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQs9lXClRFuVomHZ8psDxm4cMyH3GdNZoMcnlXd2zCIZGvpmNh16bK_gtCfUB9u4Yzl6i_PuURduNri/pub?gid=1939707437&single=true&output=csv", {
+            download: true,
+            complete: function(results) {
+                var content = getPageLines('03_Como_Gasta_Mi_Municipio', results.data);
+                populateContent(content);
+                setInterval( function() { nextBanner(1) }, 3000 );
+                drawViz(treeData);
+            }
+        });
+        
+        function getPageLines(section, lines) {
+            return lines.filter( line => line[0] == section );
+        }
+        
+        function replaceReferences(text, parameters) {
+            var newText = text;
+            var params = parameters.split(';');
+            
+            for(var j=0; j<params.length; j++) {
+                newText = newText.replace('[x]', params[j]);
+            }
+            
+            return newText;
+        }
+        
+        function populateContent(content) {
+            for(var i=0; i<content.length; i++) {
+                var item = content[i];
+                var text = item[3];
+                if(item[4] != '') {
+                    text = replaceReferences(item[3], item[4]);
+                }
+                
+                if(item[1] == 'Carrusel tipos de obras') {
+                    $('#wordbanner').html(text);
+                    var bannertexts = item[4].split(';');
+                    bannertexts.forEach( function(texto) { wordBanner.push(texto); } );
+                }
+                else if(item[1] == 'Treemap') {
+                    treeData.children.push( { "name": item[3], "value": item[4] } );
+                }
+                else {
+                    switch(item[2]) {
+                        case 'gasta1':
+                            $('#gasta1').html(text);
+                            break;
+                        case 'gasta2':
+                            $('#gasta2').html(text);
+                            break;
+                        case 'gasta3':
+                            $('#gasta3').html(text);
+                            break;
+                        case 'gasta4':
+                            $('#gasta4').html(text);
+                            break;
+                        case 'gasta5':
+                            $('#gasta5').html(text);
+                            break;
+                        case 'gasta6':
+                            $('#gasta6').html(text);
+                            break;
+                        case 'gasta7':
+                            $('#gasta7').html(text);
+                            break;
+                        case 'gasta8':
+                            $('#gasta8').html(text);
+                            break;
+                        case 'gasta9':
+                            $('#gasta9').html(text);
+                            break;
+                        case 'gasta10':
+                            $('#gasta10').html(text);
+                            break;
+                        case 'cuanto1':
+                            if(item[6] == 'verde') text = text.replace('semaforo', 'verde');
+                            else text = text.replace('semaforo', 'rojo');
+                            $('#cuanto1').html(text);
+                            break;
+                        case 'cuanto2':
+                            $('#cuanto2').html(text);
+                            break;
+                        case 'informate1':
+                            $('#informate1').html(text);
+                            $('#informate1embed').html(item[5]);
+                            break;
+                    }
+                }
+            }
+        }
+
+        function nextBanner(direction) {
+            currentBanner = currentBanner + direction;
+            if(currentBanner >= wordBanner.length) currentBanner = 0;
+            else if(currentBanner < 0) currentBanner = wordBanner.length - 1;
+            
+            $('#wordBannerText').fadeOut( 500, function() { 
+                $('#wordBannerText').html(wordBanner[currentBanner]);
+                $('#wordBannerText').fadeIn();
+            } );
+        }
+        
+        /* TREEMAP SECTION */
+        
+        var vWidth = $('#treemapContainer').width();
+        var vHeight = vWidth * 0.6;
+        
+        var g = d3.select('svg').attr('width', vWidth).attr('height', vHeight).select('g');
+        var tool = d3.select("body").append("div").attr("class", "toolTip");
+        
+        function drawViz(vData) {
+            var format = d3.format(",d");
+            var colors = d3.scaleQuantize()
+                            .domain([1000000,10200000])
+                            .range(["#0f2032", "#152d47", "#152d47", "#2c5f94", "#3c84cc", "#479ff6"]);
+            var fontSizes = [];
+            fontSizes["Vivienda"] = vWidth / 7;
+            fontSizes["Urbanización"] = vWidth / 11;
+            fontSizes["Educación"] = vWidth / 19;
+            fontSizes["Agua potable y saneamiento"] = vWidth / 51;
+            fontSizes["Otros"] = vWidth / 15;
+            fontSizes["Salud"] = vWidth / 12.5;
+            
+            // Declare d3 layout
+            var vLayout = d3.treemap().size([vWidth, vHeight]);
+            
+            // Layout + Data
+            var vRoot = d3.hierarchy(vData).sum(function (d) { return d.value; });
+            var vNodes = vRoot.descendants();
+            vLayout.tile(d3.treemapSquarify.ratio(1));
+            vLayout(vRoot);
+            
+            //var vSlices = g.selectAll('rect').data(vNodes).enter().append('rect');
+            var vSlices = d3.select('svg g')
+                            .selectAll('g')
+                            .data(vNodes)
+                            .enter()
+                            .append('g')
+                            .attr('transform', function(d) {return 'translate(' + [d.x0, d.y0] + ')'});
+            vSlices
+                .append('rect')
+                .attr('width', function(d) { return d.x1 - d.x0; })
+                .attr('height', function(d) { return d.y1 - d.y0; })
+                .style('fill', function(d) { return colors(d.data.value); } )
+                .on("mousemove", function (d) {
+                    tool.style("left", d3.event.pageX + 10 + "px")
+                    tool.style("top", d3.event.pageY - 20 + "px")
+                    tool.style("display", "inline-block");
+                    tool.html('$ ' + numberWithCommas(d.data.value));
+                }).on("mouseout", function (d) {
+                    tool.style("display", "none");
+                });
+            
+            vSlices
+                .append('text')
+                .attr('dx', 4)
+                .attr('dy', function(d,i) { return fontSizes[d.data.name] + 'px' })
+                .style('font-size', function(d,i) { return fontSizes[d.data.name] + 'px' })
+                .text(function(d) {
+                    return d.data.name;
+                });
+            
+            // Draw on screen
+            /*
+            vSlices.attr('x', function (d) { return d.x0; })
+                .attr('y', function (d) { return d.y0; })
+                .attr('width', function (d) { return d.x1 - d.x0; })
+                .attr('height', function (d) { return d.y1 - d.y0; });
+            */
+        }
+        
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    </script>
+
+</body>
+
+</html>

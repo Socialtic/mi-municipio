@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Mi Municipio - Inicio</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles.css" />
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/papaparse.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container" style="padding:0px">
+        <nav class="navbar" role="navigation">
+            <a class="navbar-brand"></a>
+            <ul class="navbar-nav flex-row float-right">
+                <li class="nav-item"><a href="nosotros.html" class="nav-link">NOSOTROS</a></li>
+                <li class="nav-item"><a href="mailto:acapulco@mimunicipio.org" class="nav-link">CONTACTO</a></li>
+                <li class="nav-item item-highlight"><a href="javascript:;" class="nav-link">ACAPULCO DE JU&Aacute;REZ&nbsp;&nbsp;&nbsp;<img src="images/flecha-topmenu.jpg" /></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row" id="mainLogo"><a href="index.html"><img src="images/logo-header.jpg" /></a></div>
+    </div>
+    <div class="container-fluid" id="fullBar">
+        <div class="row">
+            <div class="container" id="homeBanner">
+                <div id="arrowLeft"><a href="javascript:nextBanner(-1);">&nbsp;</a></div>
+                <div id="arrowRight"><a href="javascript:nextBanner(1);">&nbsp;</a></div>
+                <div class="row" style="padding-top:60px">
+                    <div class="col-8" id="homeMainText">
+                        <div>
+                            <span>&iquest;Sab&iacute;as que</span><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tu presidenta municipal gana<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>76,000.00</span> pesos mensuales?
+                        </div>
+                    </div>
+                    <div class="col-4" id="homeBannerImg"><img src="images/home-fullwidth-img.jpg" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top:-150px">
+        <div class="row" id="homeCards">
+            <div class="col">
+                <div class="card" style="background:#8dc2c6">
+                    <div class="cardHeader" id="card1">
+                        Plan Municipal<br/>de Desarrollo
+                    </div>
+                    <div class="cardText" id="pmd2">¿Sabías que el plan contiene todas las acciones a las que se compromete tu gobierno para mejorar la vida de tu municipio y que tú puedes participar?<br /><br /></div>
+                    <div class="cardButton"><a href="plan_municipal.html" id="pmd3">&iexcl;CONS&Uacute;LTALO!</a></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="background:#ff9c00">
+                    <div class="cardHeader" id="card2">
+                        &iquest;C&oacute;mo<br />&nbsp;&nbsp;se gasta?
+                    </div>
+                    <div class="cardText" id="gasta2">¿Sabías que por ley la población debe ser consultada para definir cómo se gastan los fondos federales para agua, luz y mejoras para escuelas, hospitales y tu vivienda?</div>
+                    <div class="cardButton"><a href="como_se_gasta.html" id="gasta3">&iexcl;VERIF&Iacute;CALO!</a></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="background:#f74a19">
+                    <div class="cardHeader" id="card3">
+                        &iquest;Qui&eacute;n<br />&nbsp;&nbsp;decide?
+                    </div>
+                    <div class="cardText" id="decide2">¿Sabes quién te representa en tu municipio?<br /><br />¿Sabes si asiste a las sesiones y cómo toma sus decisiones?<br /><br /></div>
+                    <div class="cardButton"><a href="quien_decide.html" id="decide3">&iexcl;CON&Oacute;CELOS!</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin:50px auto 0 auto">
+        <div class="row">
+            <div class="col text-right">
+                <a href="mailto:acapulco@mimunicipio.org"><img src="images/footericon-a.jpg" /></a>
+                &nbsp;
+                <a href="https://www.facebook.com/MiMunicipioAcapulco/"><img src="images/footericon-fb.jpg" /></a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var homeBanner = [];
+
+        Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQs9lXClRFuVomHZ8psDxm4cMyH3GdNZoMcnlXd2zCIZGvpmNh16bK_gtCfUB9u4Yzl6i_PuURduNri/pub?gid=1939707437&single=true&output=csv", {
+            download: true,
+            complete: function(results) {
+                var content = getPageLines('01_Home', results.data);
+                populateContent(content);
+                setInterval( function() { nextBanner(1) }, 5000 );
+            }
+        });
+        
+        function getPageLines(section, lines) {
+            return lines.filter( line => line[0] == section );
+        }
+        
+        function replaceReferences(text, parameters) {
+            var newText = text;
+            var params = parameters.split(';');
+            
+            for(var j=0; j<params.length; j++) {
+                newText = newText.replace('[x]', params[j]);
+            }
+            
+            return newText;
+        }
+        
+        function populateContent(content) {
+            for(var i=0; i<content.length; i++) {
+                var item = content[i];
+                var text = item[3];
+                if(item[4] != '') {
+                    text = replaceReferences(item[3], item[4]);
+                }
+                
+                if(item[1] == 'Banner rotativo') {
+                    homeBanner.push(text);
+                }
+                else {
+                    switch(item[2]) {
+                        case 'pmd1':
+                            $('#card1').html(text);
+                            break;
+                        case 'pmd2':
+                            $('#pmd2').html(text);
+                            break;
+                        case 'pmd3':
+                            $('#pmd3').html(text);
+                            $('#pmd3').attr('href', item[5]);
+                            break;
+                        case 'gasta1':
+                            $('#card2').html(text);
+                            break;
+                        case 'gasta2':
+                            $('#gasta2').html(text);
+                            break;
+                        case 'gasta3':
+                            $('#gasta3').html(text);
+                            $('#gasta3').attr('href', item[5]);
+                            break;
+                        case 'decide1':
+                            $('#card3').html(text);
+                            break;
+                        case 'decide2':
+                            $('#decide2').html(text);
+                            break;
+                        case 'decide3':
+                            $('#decide3').html(text);
+                            $('#decide3').attr('href', item[5]);
+                            break;
+                    }
+                }
+            }
+        }
+
+        var homeBannerBackColor = ["home-fullwidth-fondo.jpg", "home-fullwidth-fondo-2.jpg", "home-fullwidth-fondo-3.jpg"];
+        var homeBannerImg = ["home-fullwidth-img.jpg", "home-fullwidth-img-2.jpg", "home-fullwidth-img-3.jpg"];
+        var currentBanner = 0;
+        
+        function nextBanner(direction) {
+            currentBanner = currentBanner + direction;
+            if(currentBanner >= homeBanner.length) currentBanner = 0;
+            else if(currentBanner < 0) currentBanner = homeBanner.length - 1;
+            
+            $('#homeMainText div').fadeOut( 500, function() { 
+                $('#homeBannerImg img').attr('src', 'images/' + homeBannerImg[currentBanner]);
+                $('#fullBar').css('background-image', 'url(images/' + homeBannerBackColor[currentBanner] + ')');
+                $('#homeMainText div').html(homeBanner[currentBanner]);
+                $('#homeMainText div').fadeIn();
+            } );
+        }
+        
+    </script>
+    
+</body>
+
+</html>

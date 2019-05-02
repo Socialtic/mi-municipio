@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Mi Municipio - Quién decide</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles.css" />
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/papaparse.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container" style="padding:0px">
+        <nav class="navbar" role="navigation">
+            <a class="navbar-brand"></a>
+            <ul class="navbar-nav flex-row float-right">
+                <li class="nav-item"><a href="nosotros.html" class="nav-link">NOSOTROS</a></li>
+                <li class="nav-item"><a href="mailto:acapulco@mimunicipio.org" class="nav-link">CONTACTO</a></li>
+                <li class="nav-item item-highlight"><a href="javascript:;" class="nav-link">ACAPULCO DE JU&Aacute;REZ&nbsp;&nbsp;&nbsp;<img src="images/flecha-topmenu.jpg" /></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row" id="mainLogo"><a href="index.html"><img src="images/logo-header.jpg" /></a></div>
+    </div>
+    
+    <div class="container title-bar-container">
+        <div class="row">
+            <div class="col" id="decideTitleBar">
+                <div class="row main-title">&iquest;Qui&eacute;n decide?</div>
+                <div class="row title-submenu">
+                    <div class="col">
+                        <a href="quien_decide.html#quien-decide">&iquest;Qui&eacute;n decide?</a>
+                        <a href="quien_decide.html#que-es-el-cabildo">&iquest;Qu&eacute; es el Cabildo y qui&eacute;nes lo integran?</a>
+                        <a href="quien_decide.html#como-esta-cumpliendo-mi-cabildo">&iquest;C&oacute;mo est&aacute; cumpliendo mi Cabildo?</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col title-button" id="planTitleButton">
+                <div class="title"><a href="plan_municipal.html">Plan</a><br />&nbsp;&nbsp;<a href="plan_municipal.html">municipal</a></div>
+                <div class="icon"><a href="plan_municipal.html"><img src="images/plan-title-icon.jpg" /></a></div>
+            </div>
+            <div class="col title-button" id="gastaTitleButton">
+                <div class="title"><a href="como_se_gasta.html">&iquest;C&oacute;mo</a><br />&nbsp;&nbsp;<a href="como_se_gasta.html">se gasta?</a></div>
+                <div class="icon"><a href="como_se_gasta.html"><img src="images/gasta-title-icon.jpg" /></a></div>
+            </div>
+        </div>
+    </div>
+    
+    <a name="quien-decide"></a>
+    <div class="container body-content body-decide-white" style="margin-bottom:40px">
+        <div class="row">
+            <div class="col text-center">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/DwNzReIlbMs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>&nbsp;</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col body-title">&iquest;C&oacute;mo funciona mi gobierno?</div>
+        </div>
+        <div class="row"><div class="col"><p class="explicacion">El ciclo de toma de decisiones de mi municipio. Da clic para conocer las etapas:</p></div></div>
+        <div class="row" id="cicloMovil">
+            <div class="col">
+                <img src="images/grafico-ciclo-movil.jpg" style="width:100%" />
+            </div>
+        </div>
+        <div class="row" id="cicloFull">
+            <div class="col" id="cicloContainer">
+                <img src="images/grafico-fondo.jpg" style="width:100%" />
+                <p style="margin:0; font-size:0.8em" id="infografia10">Fuente: Elaboración propia</p>
+                <a class="paso" href="javascript:;" id="paso1"></a>
+                <div class="pasoOculto" id="texto1"></div>
+                <a class="paso" href="javascript:;" id="paso2"></a>
+                <div class="pasoOculto" id="texto2"></div>
+                <a class="paso" href="javascript:;" id="paso3"></a>
+                <div class="pasoOculto" id="texto3"></div>
+                <a class="paso" href="javascript:;" id="paso4"></a>
+                <div class="pasoOculto" id="texto4"></div>
+                <div class="pasoOculto" id="texto4a"></div>
+                <a class="paso" href="javascript:;" id="paso5"></a>
+                <div class="pasoOculto" id="texto5"></div>
+                <a class="paso" href="javascript:;" id="paso6"></a>
+                <div class="pasoOculto" id="texto6"></div>
+            </div>
+        </div>
+    </div>
+    
+    <a name="que-es-el-cabildo"></a>
+    <div class="container body-content body-rojo">
+        <div class="row">
+            <div class="col body-title">&iquest;Qu&eacute; es el Cabildo y qui&eacute;nes lo integran?</div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p style="font-size:15px" id="cabildo_1">El Cabildo es la reunión de los integrantes del Ayuntamiento. Revisan, debaten y proponen soluciones a los problemas y situaciones del municipio. ¡Recuerda que los regidores son las personas que se encargan directamente de temas como salud, seguridad, servicios urbanos, recreación, obras públicas, entre otros!</p>
+                <p style="font-size:15px" id="cabildo_2">El Cabildo es integrado por:</p>
+            </div>
+        </div>
+        <div class="row" id="integrantesCabildo">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header title-presidente">Presidenta/e Municipal <a href="javascript:;"><img src="images/title-presidente.jpg" /></a></div>
+                    <div class="card-body">
+                        <div class="toggleable" id="t_presidente"></div>
+                        <div class="toggleable" style="display:none">
+                            <p class="foto"><img src="quien_decide.html" id="presidente_foto" /></p>
+                            <p id="presidente_data">
+                                <span class="nombre">Adela Román Ocampo</span><br />
+                                <span class="puesto">Presidenta municipal</span><br />
+                                <span class="partido">Morena</span><br />
+                                Sueldo: $<span class="sueldo">76,146</span> pesos
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header title-sindico">Síndico/a <a href="javascript:;"><img src="images/title-sindico.jpg" /></a></div>
+                    <div class="card-body">
+                        <div class="toggleable" id="t_sindico"></div>
+                        <div class="toggleable" style="display:none" id="sindicos_data"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-header title-regidor">Regidor/a <a href="javascript:;"><img src="images/title-regidor.jpg" /></a></div>
+                    <div class="card-body">
+                        <div class="toggleable" id="t_regidor"></div>
+                        <div class="toggleable" style="display:none" id="regidores_data"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content body-rojo-oscuro" style="margin-top:0px; padding-bottom:10px">
+        <div class="row">
+            <div class="col body-title">&iquest;Qu&eacute; puedo hacer?</div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p style="font-size:15px; color:#FFF" id="hacer1">Escribe a tus integrantes de cabildo para preguntar cu&aacute;ndo son las consultas de gobierno municipal.</p>
+            </div>
+        </div>
+        <div class="row decideIconsRow">
+            <div class="col decideIcon"><a href="https://www.facebook.com/MiMunicipioAcapulco/" id="hacer2alt"><img src="images/footericon-fb-rojo.jpg" /></a></div>
+            <div class="col" style="padding-left:3px"><a href="https://www.facebook.com/MiMunicipioAcapulco/" id="hacer2">Facebook</a></div>
+            <div class="col decideIcon"><img src="images/rojo-telefono.jpg" /></div>
+            <div class="col" style="padding-left:3px"><a href="javascript:;" id="hacer3" style="color:#FFF">(744) 440 7000</div>
+            <div class="col decideIcon"><img src="images/rojo-mail.jpg" /></div>
+            <div class="col" style="padding-left:3px" id="hacer4">Av. Cuauhtémoc S/N, Interior Parque Papagayo, Fracc. Hornos</div>
+            <div class="col">&nbsp;</div>
+        </div>
+    </div>
+    
+    <a name="como-esta-cumpliendo-mi-cabildo"></a>
+    <div class="container body-content body-decide-white" style="margin-bottom:40px">
+        <div class="row">
+            <div class="col body-title" id="s1_title">&iquest;C&oacute;mo est&aacute; cumpliendo mi Municipio?</div>
+        </div>
+        <div class="row" style="padding-top:10px; display:table">
+            <div class="col" style="display:table-cell">
+                <div class="row">
+                    <div class="col" id="semaforo1"></div>
+                </div>
+            </div>
+            <div class="col-2 text-center" style="display:table-cell; vertical-align:middle"><img src="images/semaforo-decide.jpg" /></div>
+        </div>
+    </div>
+    
+    <div class="container body-content body-rojo">
+        <div class="row">
+            <div class="col body-title">&iexcl;Inf&oacute;rmate y participa!</div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p style="font-size:15px" id="informate1">Gu&iacute;a para conocer a quienes conforman el Cabildo y el proceso de toma de decisiones.</p>
+                <!--<p><img src="images/placeholder-decide.jpg" /></p>-->
+                <div id="informate1embed"><iframe style="width:525px; height:342px;" src="http://e.issuu.com/embed.html#35186677/65362621" frameborder="0" allowfullscreen></iframe></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container footer-rojo">
+        <div class="row">
+            <div class="col text-right">
+                <a href="mailto:acapulco@mimunicipio.org"><img src="images/footericon-a-rojo.jpg" /></a>
+                &nbsp;
+                <a href="https://www.facebook.com/MiMunicipioAcapulco/"><img src="images/footericon-fb-rojo.jpg" /></a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQs9lXClRFuVomHZ8psDxm4cMyH3GdNZoMcnlXd2zCIZGvpmNh16bK_gtCfUB9u4Yzl6i_PuURduNri/pub?gid=1939707437&single=true&output=csv", {
+            download: true,
+            complete: function(results) {
+                var content = getPageLines('04_Quien_Decide', results.data);
+                populateContent(content);
+            }
+        });
+        
+        function getPageLines(section, lines) {
+            return lines.filter( line => line[0] == section );
+        }
+        
+        function replaceReferences(text, parameters) {
+            var newText = text;
+            var params = parameters.split(';');
+            
+            for(var j=0; j<params.length; j++) {
+                newText = newText.replace('[x]', params[j]);
+            }
+            
+            return newText;
+        }
+        
+        function populateContent(content) {
+            for(var i=0; i<content.length; i++) {
+                var item = content[i];
+                var text = item[3];
+                if(item[4] != '') {
+                    text = replaceReferences(item[3], item[4]);
+                }
+                
+                if(item[1] == 'Cabildo') {
+                    switch(item[2]) {
+                        case 'presidente':
+                            var datos = item[4].split(';');
+                            $('#presidente_data span.nombre').text(datos[0]);
+                            $('#presidente_data span.puesto').text(datos[1]);
+                            $('#presidente_data span.partido').text(datos[2]);
+                            $('#presidente_data span.sueldo').text(datos[3]);
+                            $('#presidente_foto').attr('src', item[5]);
+                            break;
+                        case 'sindico':
+                            $('#sindicos_data').append('<p><span class="nombre">' + item[4] + '</span><br />' + item[3] + '</p>');
+                            break;
+                        case 'regidor':
+                            var datos = item[4].split(';');
+                            var descripcion = '<p><span class="nombre">' + datos[0] + '</span><br />' + item[3];
+                            if(datos[1]) descripcion += '<br />' + datos[1];
+                            descripcion += '</p>';
+                            $('#regidores_data').append(descripcion);
+                            break;
+                    }
+                }
+                else if(item[1] == 'Semaforo 1') {
+                    if(item[4] != 'NA') {
+                        var semaforo = '';
+                        var sub = /sub/;
+                        if(item[2].match(sub)) {
+                            semaforo += '<p class="subsemaforo">';
+                        }
+                        else {
+                            semaforo += '<p class="semaforo">';
+                        }
+                        if(item[6] == 'verde') {
+                            semaforo += '<img src="images/semaforo-verde-blanco.jpg" /> ';
+                        }
+                        else {
+                            semaforo += '<img src="images/semaforo-rojo-blanco.jpg" /> ';
+                        }
+                        semaforo += text;
+                        semaforo += '</p>';
+                        
+                        $('#semaforo1').append(semaforo);
+                    }
+                }
+                else {
+                    switch(item[2]) {
+                        case 'infografia1':
+                        case 'infografia2':
+                        case 'infografia3':
+                            $('#texto1').append('&bull; ' + text + '<br />');
+                            break;
+                        case 'infografia4':
+                            $('#texto2').html(text);
+                            break;
+                        case 'infografia5':
+                            $('#texto3').html(text);
+                            break;
+                        case 'infografia6':
+                            $('#texto4').html(text);
+                            break;
+                        case 'infografia7':
+                            $('#texto4a').html(text);
+                            break;
+                        case 'infografia8':
+                            $('#texto5').html(text);
+                            break;
+                        case 'infografia9':
+                            $('#texto6').html(text);
+                            break;
+                        case 'infografia10':
+                            $('#infografia10').html(text);
+                            break;
+                        case 'cabildo_1':
+                            $('#cabildo_1').html(text);
+                            break;
+                        case 'cabildo_2':
+                            $('#cabildo_2').html(text);
+                            break;
+                        case 'informate1':
+                            $('#informate1').html(text);
+                            $('#informate1embed').html(item[5]);
+                            break;
+                        case 'hacer1':
+                            $('#hacer1').html(text);
+                            break;
+                        case 'hacer2':
+                            $('#hacer2').html(text);
+                            $('#hacer2').attr('href', item[5]);
+                            $('#hacer2alt').attr('href', item[5]);
+                            break;
+                        case 'hacer3':
+                            $('#hacer3').text(text);
+                            $('#hacer3').attr('href', 'tel:' + text);
+                            break;
+                        case 'hacer4':
+                            $('#hacer4').html(text);
+                            break;
+                        case 's1_title':
+                            $('#s1_title').html(text);
+                            break;
+                        case 't_presidente':
+                        case 't_sindico':
+                        case 't_regidor':
+                            var lines = text.split("\n");
+                            lines.forEach(function(line) {
+                                var firstChar = '&bull; ';
+                                if(line[0] == '-') firstChar = '';
+                                if(line.length > 5) $('#' + item[2]).append('<p>' + firstChar + line + '</p>'); 
+                            });
+                            break;
+                    }
+                }
+            }
+        }
+    
+        $('#integrantesCabildo .card-header a').on('click', function() {
+            $(this).parents('div.card').find('div.toggleable').toggle();
+        } );
+        
+        $('a.paso').on('click', function() {
+            var id = $(this).attr('id').replace('paso', '');
+            $('#texto' + id).fadeIn();
+            if(id == 4) {
+                $('#texto' + id + 'a').fadeIn();
+            }
+        });
+    </script>
+
+</body>
+
+</html>
