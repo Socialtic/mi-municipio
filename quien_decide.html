@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <title>Mi Municipio - Quién decide</title>
 
     <!-- Bootstrap -->
@@ -13,6 +13,17 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/papaparse.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142060975-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-142060975-1');
+    </script>
+    
 </head>
 
 <body>
@@ -30,7 +41,7 @@
     <div class="container">
         <div class="row" id="mainLogo"><a href="index.html"><img src="images/logo-header.jpg" /></a></div>
     </div>
-    
+
     <div class="container title-bar-container">
         <div class="row">
             <div class="col" id="decideTitleBar">
@@ -53,7 +64,7 @@
             </div>
         </div>
     </div>
-    
+
     <a name="quien-decide"></a>
     <div class="container body-content body-decide-white" style="margin-bottom:40px">
         <div class="row">
@@ -91,7 +102,7 @@
             </div>
         </div>
     </div>
-    
+
     <a name="que-es-el-cabildo"></a>
     <div class="container body-content body-rojo">
         <div class="row">
@@ -160,7 +171,7 @@
             <div class="col">&nbsp;</div>
         </div>
     </div>
-    
+
     <a name="como-esta-cumpliendo-mi-cabildo"></a>
     <div class="container body-content body-decide-white" style="margin-bottom:40px">
         <div class="row">
@@ -175,7 +186,7 @@
             <div class="col-2 text-center" style="display:table-cell; vertical-align:middle"><img src="images/semaforo-decide.jpg" /></div>
         </div>
     </div>
-    
+
     <div class="container body-content body-rojo">
         <div class="row">
             <div class="col body-title">&iexcl;Inf&oacute;rmate y participa!</div>
@@ -198,7 +209,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQs9lXClRFuVomHZ8psDxm4cMyH3GdNZoMcnlXd2zCIZGvpmNh16bK_gtCfUB9u4Yzl6i_PuURduNri/pub?gid=1939707437&single=true&output=csv", {
             download: true,
@@ -207,22 +218,22 @@
                 populateContent(content);
             }
         });
-        
+
         function getPageLines(section, lines) {
             return lines.filter( line => line[0] == section );
         }
-        
+
         function replaceReferences(text, parameters) {
             var newText = text;
             var params = parameters.split(';');
-            
+
             for(var j=0; j<params.length; j++) {
                 newText = newText.replace('[x]', params[j]);
             }
-            
+
             return newText;
         }
-        
+
         function populateContent(content) {
             for(var i=0; i<content.length; i++) {
                 var item = content[i];
@@ -230,7 +241,7 @@
                 if(item[4] != '') {
                     text = replaceReferences(item[3], item[4]);
                 }
-                
+
                 if(item[1] == 'Cabildo') {
                     switch(item[2]) {
                         case 'presidente':
@@ -271,7 +282,7 @@
                         }
                         semaforo += text;
                         semaforo += '</p>';
-                        
+
                         $('#semaforo1').append(semaforo);
                     }
                 }
@@ -338,18 +349,18 @@
                             lines.forEach(function(line) {
                                 var firstChar = '&bull; ';
                                 if(line[0] == '-') firstChar = '';
-                                if(line.length > 5) $('#' + item[2]).append('<p>' + firstChar + line + '</p>'); 
+                                if(line.length > 5) $('#' + item[2]).append('<p>' + firstChar + line + '</p>');
                             });
                             break;
                     }
                 }
             }
         }
-    
+
         $('#integrantesCabildo .card-header a').on('click', function() {
             $(this).parents('div.card').find('div.toggleable').toggle();
         } );
-        
+
         $('a.paso').on('click', function() {
             var id = $(this).attr('id').replace('paso', '');
             $('#texto' + id).fadeIn();

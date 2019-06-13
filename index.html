@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <title>Mi Municipio - Inicio</title>
 
     <!-- Bootstrap -->
@@ -13,6 +13,17 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/papaparse.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142060975-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-142060975-1');
+    </script>
+    
 </head>
 
 <body>
@@ -88,7 +99,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         var homeBanner = [];
 
@@ -100,22 +111,22 @@
                 setInterval( function() { nextBanner(1) }, 5000 );
             }
         });
-        
+
         function getPageLines(section, lines) {
             return lines.filter( line => line[0] == section );
         }
-        
+
         function replaceReferences(text, parameters) {
             var newText = text;
             var params = parameters.split(';');
-            
+
             for(var j=0; j<params.length; j++) {
                 newText = newText.replace('[x]', params[j]);
             }
-            
+
             return newText;
         }
-        
+
         function populateContent(content) {
             for(var i=0; i<content.length; i++) {
                 var item = content[i];
@@ -123,7 +134,7 @@
                 if(item[4] != '') {
                     text = replaceReferences(item[3], item[4]);
                 }
-                
+
                 if(item[1] == 'Banner rotativo') {
                     homeBanner.push(text);
                 }
@@ -167,22 +178,22 @@
         var homeBannerBackColor = ["home-fullwidth-fondo.jpg", "home-fullwidth-fondo-2.jpg", "home-fullwidth-fondo-3.jpg"];
         var homeBannerImg = ["home-fullwidth-img.jpg", "home-fullwidth-img-2.jpg", "home-fullwidth-img-3.jpg"];
         var currentBanner = 0;
-        
+
         function nextBanner(direction) {
             currentBanner = currentBanner + direction;
             if(currentBanner >= homeBanner.length) currentBanner = 0;
             else if(currentBanner < 0) currentBanner = homeBanner.length - 1;
-            
-            $('#homeMainText div').fadeOut( 500, function() { 
+
+            $('#homeMainText div').fadeOut( 500, function() {
                 $('#homeBannerImg img').attr('src', 'images/' + homeBannerImg[currentBanner]);
                 $('#fullBar').css('background-image', 'url(images/' + homeBannerBackColor[currentBanner] + ')');
                 $('#homeMainText div').html(homeBanner[currentBanner]);
                 $('#homeMainText div').fadeIn();
             } );
         }
-        
+
     </script>
-    
+
 </body>
 
 </html>

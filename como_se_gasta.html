@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <title>Mi Municipio - Cómo se gasta</title>
 
     <!-- Bootstrap -->
@@ -14,6 +14,17 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="js/papaparse.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142060975-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-142060975-1');
+    </script>
+
 </head>
 
 <body>
@@ -31,7 +42,7 @@
     <div class="container">
         <div class="row" id="mainLogo"><a href="index.html"><img src="images/logo-header.jpg" /></a></div>
     </div>
-    
+
     <div class="container title-bar-container">
         <div class="row">
             <div class="col" id="gastaTitleBar">
@@ -54,7 +65,7 @@
             </div>
         </div>
     </div>
-    
+
     <a name="como-se-gasta"></a>
     <div class="container body-content body-gasta-white">
         <div class="row">
@@ -67,11 +78,11 @@
                     <div class="col">
                         <p class="title" id="gasta2">Informar</p>
                         <ul>
-                           <li><span id="wordbanner">Cuánto recibe mi municipio para obras de</span> <strong><span id="wordBannerText">alcantarillado</span></strong>.</li> 
-                           <li id="gasta3">Cu&aacute;ndo lo gasta.</li> 
-                           <li id="gasta4">D&oacute;nde se encuentran las obras.</li> 
-                           <li id="gasta5">Quiénes son los beneficiarios.</li> 
-                           <li id="gasta6">Costo de las obras.</li> 
+                           <li><span id="wordbanner">Cuánto recibe mi municipio para obras de</span> <strong><span id="wordBannerText">alcantarillado</span></strong>.</li>
+                           <li id="gasta3">Cu&aacute;ndo lo gasta.</li>
+                           <li id="gasta4">D&oacute;nde se encuentran las obras.</li>
+                           <li id="gasta5">Quiénes son los beneficiarios.</li>
+                           <li id="gasta6">Costo de las obras.</li>
                         <ul>
                     </div>
                 </div>
@@ -82,16 +93,16 @@
                     <div class="col">
                         <p class="title" id="gasta7">Seleccionar obras</p>
                         <ul>
-                           <li id="gasta8">que se realizarán durante el año.</li> 
-                           <li id="gasta9">dichas obras deben atender a varias zonas del municipio.</li> 
-                           <li id="gasta10">la selección de obras debe realizarse entre el Consejo de Planeación para el Desarrollo Municipal (Coplademun) y los consejos de Desarrollo Municipal (CDM). En estos consejos deben participar autoridades municipales y representantes de grupos y organizaciones de la socieda civil.</li> 
+                           <li id="gasta8">que se realizarán durante el año.</li>
+                           <li id="gasta9">dichas obras deben atender a varias zonas del municipio.</li>
+                           <li id="gasta10">la selección de obras debe realizarse entre el Consejo de Planeación para el Desarrollo Municipal (Coplademun) y los consejos de Desarrollo Municipal (CDM). En estos consejos deben participar autoridades municipales y representantes de grupos y organizaciones de la socieda civil.</li>
                         <ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <a name="cuanto-recibio-mi-municipio"></a>
     <div class="container body-content body-gasta-white">
         <div class="row">
@@ -125,7 +136,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="container body-content body-gasta-white">
         <div class="row">
             <div class="col body-title">&iexcl;Inf&oacute;rmate y participa!</div>
@@ -156,7 +167,7 @@
             "name": "Gasto por tipo de obras",
             "children": []
         };
-        
+
         Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQs9lXClRFuVomHZ8psDxm4cMyH3GdNZoMcnlXd2zCIZGvpmNh16bK_gtCfUB9u4Yzl6i_PuURduNri/pub?gid=1939707437&single=true&output=csv", {
             download: true,
             complete: function(results) {
@@ -166,22 +177,22 @@
                 drawViz(treeData);
             }
         });
-        
+
         function getPageLines(section, lines) {
             return lines.filter( line => line[0] == section );
         }
-        
+
         function replaceReferences(text, parameters) {
             var newText = text;
             var params = parameters.split(';');
-            
+
             for(var j=0; j<params.length; j++) {
                 newText = newText.replace('[x]', params[j]);
             }
-            
+
             return newText;
         }
-        
+
         function populateContent(content) {
             for(var i=0; i<content.length; i++) {
                 var item = content[i];
@@ -189,7 +200,7 @@
                 if(item[4] != '') {
                     text = replaceReferences(item[3], item[4]);
                 }
-                
+
                 if(item[1] == 'Carrusel tipos de obras') {
                     $('#wordbanner').html(text);
                     var bannertexts = item[4].split(';');
@@ -251,21 +262,21 @@
             currentBanner = currentBanner + direction;
             if(currentBanner >= wordBanner.length) currentBanner = 0;
             else if(currentBanner < 0) currentBanner = wordBanner.length - 1;
-            
-            $('#wordBannerText').fadeOut( 500, function() { 
+
+            $('#wordBannerText').fadeOut( 500, function() {
                 $('#wordBannerText').html(wordBanner[currentBanner]);
                 $('#wordBannerText').fadeIn();
             } );
         }
-        
+
         /* TREEMAP SECTION */
-        
+
         var vWidth = $('#treemapContainer').width();
         var vHeight = vWidth * 0.6;
-        
+
         var g = d3.select('svg').attr('width', vWidth).attr('height', vHeight).select('g');
         var tool = d3.select("body").append("div").attr("class", "toolTip");
-        
+
         function drawViz(vData) {
             var format = d3.format(",d");
             var colors = d3.scaleQuantize()
@@ -278,16 +289,16 @@
             fontSizes["Agua potable y saneamiento"] = vWidth / 51;
             fontSizes["Otros"] = vWidth / 15;
             fontSizes["Salud"] = vWidth / 12.5;
-            
+
             // Declare d3 layout
             var vLayout = d3.treemap().size([vWidth, vHeight]);
-            
+
             // Layout + Data
             var vRoot = d3.hierarchy(vData).sum(function (d) { return d.value; });
             var vNodes = vRoot.descendants();
             vLayout.tile(d3.treemapSquarify.ratio(1));
             vLayout(vRoot);
-            
+
             //var vSlices = g.selectAll('rect').data(vNodes).enter().append('rect');
             var vSlices = d3.select('svg g')
                             .selectAll('g')
@@ -308,7 +319,7 @@
                 }).on("mouseout", function (d) {
                     tool.style("display", "none");
                 });
-            
+
             vSlices
                 .append('text')
                 .attr('dx', 4)
@@ -317,7 +328,7 @@
                 .text(function(d) {
                     return d.data.name;
                 });
-            
+
             // Draw on screen
             /*
             vSlices.attr('x', function (d) { return d.x0; })
@@ -326,7 +337,7 @@
                 .attr('height', function (d) { return d.y1 - d.y0; });
             */
         }
-        
+
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }

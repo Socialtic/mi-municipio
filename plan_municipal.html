@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <title>Mi Municipio - Plan Municipal</title>
 
     <!-- Bootstrap -->
@@ -13,6 +13,17 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/papaparse.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142060975-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-142060975-1');
+    </script>
+    
 </head>
 
 <body>
@@ -30,7 +41,7 @@
     <div class="container">
         <div class="row" id="mainLogo"><a href="index.html"><img src="images/logo-header.jpg" /></a></div>
     </div>
-    
+
     <div class="container title-bar-container">
         <div class="row">
             <div class="col" id="planTitleBar">
@@ -54,7 +65,7 @@
             </div>
         </div>
     </div>
-    
+
     <a name="que-es-el-pmd"></a>
     <div class="container body-content body-white">
         <div class="row">
@@ -70,7 +81,7 @@
             </div>
         </div>
     </div>
-    
+
     <a name="mi-municipio-cumple"></a>
     <div class="container body-content body-celeste">
         <div class="row">
@@ -90,7 +101,7 @@
             <div class="col-2 text-center"><img src="images/pmd-2.jpg" /></div>
         </div>
     </div>
-    
+
     <a name="como-esta-cumpliendo"></a>
     <div class="container body-content body-white">
         <div class="row">
@@ -109,7 +120,7 @@
             </div>
         </div>
     </div>
-    
+
     <a name="como-puedes-participar"></a>
     <div class="container body-content body-celeste">
         <div class="row">
@@ -172,7 +183,7 @@
             </div>
         </div>
     </div>
-    
+
     <a name="informate"></a>
     <div class="container body-content body-white">
         <div class="row">
@@ -196,7 +207,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQs9lXClRFuVomHZ8psDxm4cMyH3GdNZoMcnlXd2zCIZGvpmNh16bK_gtCfUB9u4Yzl6i_PuURduNri/pub?gid=1939707437&single=true&output=csv", {
             download: true,
@@ -205,22 +216,22 @@
                 populateContent(content);
             }
         });
-        
+
         function getPageLines(section, lines) {
             return lines.filter( line => line[0] == section );
         }
-        
+
         function replaceReferences(text, parameters) {
             var newText = text;
             var params = parameters.split(';');
-            
+
             for(var j=0; j<params.length; j++) {
                 newText = newText.replace('[x]', params[j]);
             }
-            
+
             return newText;
         }
-        
+
         function populateContent(content) {
             for(var i=0; i<content.length; i++) {
                 var item = content[i];
@@ -228,7 +239,7 @@
                 if(item[4] != '') {
                     text = replaceReferences(item[3], item[4]);
                 }
-                
+
                 if(item[1] == 'Semaforo 1') {
                     if(item[4] != 'NA') {
                         var semaforo = '';
@@ -247,7 +258,7 @@
                         }
                         semaforo += text;
                         semaforo += '</p>';
-                        
+
                         $('#semaforo1').append(semaforo);
                     }
                 }
@@ -272,7 +283,7 @@
                             semaforo += ' - <span>' + item[4] + '</span>'
                         }
                         semaforo += '</p>';
-                        
+
                         $('#semaforo2').append(semaforo);
                     }
                 }
@@ -338,7 +349,7 @@
                 }
             }
         }
-    
+
     </script>
 
 </body>
